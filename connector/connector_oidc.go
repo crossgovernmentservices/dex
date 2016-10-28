@@ -29,6 +29,8 @@ type OIDCConnectorConfig struct {
 	ClientSecret         string `json:"clientSecret"`
 	TrustedEmailProvider bool   `json:"trustedEmailProvider"`
 	EmailClaim           string `json:"emailClaim"`
+	Department           string `json:"department"`
+	HelpText             string `json:"helpText"`
 }
 
 func (cfg *OIDCConnectorConfig) ConnectorID() string {
@@ -47,6 +49,8 @@ type OIDCConnector struct {
 	client               *oidc.Client
 	trustedEmailProvider bool
 	emailClaim           string
+	department           string
+	helpText             string
 }
 
 func (cfg *OIDCConnectorConfig) Connector(ns url.URL, lf oidc.LoginFunc, tpls *template.Template) (Connector, error) {
@@ -73,6 +77,8 @@ func (cfg *OIDCConnectorConfig) Connector(ns url.URL, lf oidc.LoginFunc, tpls *t
 		client:               cl,
 		trustedEmailProvider: cfg.TrustedEmailProvider,
 		emailClaim:           cfg.EmailClaim,
+		department:           cfg.Department,
+		helpText:             cfg.HelpText,
 	}
 	return idpc, nil
 }
@@ -104,6 +110,14 @@ func (c *OIDCConnector) Sync() chan struct{} {
 
 func (c *OIDCConnector) TrustedEmailProvider() bool {
 	return c.trustedEmailProvider
+}
+
+func (c *OIDCConnector) Department() string {
+	return c.department
+}
+
+func (c *OIDCConnector) HelpText() string {
+	return c.helpText
 }
 
 func redirectError(w http.ResponseWriter, errorURL url.URL, q url.Values) {

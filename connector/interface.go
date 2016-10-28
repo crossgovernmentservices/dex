@@ -37,6 +37,12 @@ type Connector interface {
 	// claims coming from this provider.
 	TrustedEmailProvider() bool
 
+	//
+	Department() string
+
+	// helps in login page
+	HelpText() string
+
 	health.Checkable
 }
 

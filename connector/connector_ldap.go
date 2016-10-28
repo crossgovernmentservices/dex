@@ -282,6 +282,14 @@ func (c *LDAPConnector) TrustedEmailProvider() bool {
 	return true
 }
 
+func (c *LDAPConnector) Department() string {
+	return ""
+}
+
+func (c *LDAPConnector) HelpText() string {
+	return ""
+}
+
 // A LDAPPool is a Connection Pool for LDAP connections. Use Do() to request connections
 // from the pool.
 type LDAPPool struct {

@@ -98,6 +98,14 @@ func (c *LocalConnector) TrustedEmailProvider() bool {
 	return false
 }
 
+func (c *LocalConnector) Department() string {
+	return ""
+}
+
+func (c *LocalConnector) HelpText() string {
+	return ""
+}
+
 type LocalIdentityProvider struct {
 	PasswordInfoRepo user.PasswordInfoRepo
 	UserRepo         user.UserRepo

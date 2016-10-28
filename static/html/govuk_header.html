@@ -2,75 +2,45 @@
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Access government services</title>
 
-    <title>GOV.UK - The best place to find government services and information</title>
+    <!--[if gt IE 8]><!--><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template.css?0.18.3" media="screen" rel="stylesheet" /><!--<![endif]-->
+    <!--[if IE 6]><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template-ie6.css?0.18.3" media="screen" rel="stylesheet" /><![endif]-->
+    <!--[if IE 7]><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template-ie7.css?0.18.3" media="screen" rel="stylesheet" /><![endif]-->
+    <!--[if IE 8]><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template-ie8.css?0.18.3" media="screen" rel="stylesheet" /><![endif]-->
+    <link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template-print.css?0.18.3" media="print" rel="stylesheet" />
 
-    <!--[if gt IE 8]><!--><link href="http://localhost:5000/static/govuk_template/assets/stylesheets/govuk-template.css?0.17.0" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
-    <!--[if IE 6]><link href="http://localhost:5000/static/govuk_template/assets/stylesheets/govuk-template-ie6.css?0.17.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="http://localhost:5000/static/govuk_template/assets/stylesheets/govuk-template-ie7.css?0.17.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="http://localhost:5000/static/govuk_template/assets/stylesheets/govuk-template-ie8.css?0.17.0" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/fonts-ie8.css?0.18.3" media="all" rel="stylesheet" /><![endif]-->
+    <!--[if gte IE 9]><!--><link href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/fonts.css?0.18.3" media="all" rel="stylesheet" /><!--<![endif]-->
+    <!--[if lt IE 9]><script src="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/javascripts/ie.js?0.18.3"></script><![endif]-->
 
-    <link href="http://localhost:5000/static/govuk_template/assets/stylesheets/govuk-template-print.css?0.17.0" media="print" rel="stylesheet" type="text/css" />
-
-    <!--[if IE 8]>
-    <script type="text/javascript">
-      (function(){if(window.opera){return;}
-       setTimeout(function(){var a=document,g,b={families:(g=
-       ["nta"]),urls:["http://localhost:5000/static/govuk_template/assets/stylesheets/fonts-ie8.css?0.17.0"]},
-       c="http://localhost:5000/static/govuk_template/assets/javascripts/vendor/goog/webfont-debug.js?0.17.0",d="script",
-       e=a.createElement(d),f=a.getElementsByTagName(d)[0],h=g.length;WebFontConfig
-       ={custom:b},e.src=c,f.parentNode.insertBefore(e,f);for(;h=h-1;a.documentElement
-       .className+=' wf-'+g[h].replace(/\s/g,'').toLowerCase()+'-n4-loading');},0)
-      })()
-    </script>
-    <![endif]-->
-    <!--[if gte IE 9]><!-->
-      <link href="http://localhost:5000/static/govuk_template/assets/stylesheets/fonts.css?0.17.0" media="all" rel="stylesheet" type="text/css" />
-    <!--<![endif]-->
-
-
-    <!--[if lt IE 9]>
-      <script src="http://localhost:5000/static/govuk_template/assets/javascripts/ie.js?0.17.0" type="text/javascript"></script>
-    <![endif]-->
-
-    <link rel="shortcut icon" href="http://localhost:5000/static/govuk_template/assets/images/favicon.ico?0.17.0" type="image/x-icon" />
-    <link rel="mask-icon" href="http://localhost:5000/static/govuk_template/assets/images/gov.uk_logotype_crown.svg?0.17.0" color="#0b0c0c">
-
-    <!-- Size for iPad and iPad mini (high resolution) -->
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:5000/static/govuk_template/assets/images/apple-touch-icon-152x152.png?0.17.0">
-    <!-- Size for iPhone and iPod touch (high resolution) -->
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:5000/static/govuk_template/assets/images/apple-touch-icon-120x120.png?0.17.0">
-    <!-- Size for iPad 2 and iPad mini (standard resolution) -->
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:5000/static/govuk_template/assets/images/apple-touch-icon-76x76.png?0.17.0">
-    <!-- Default non-defined size, also used for Android 2.1+ devices -->
-    <link rel="apple-touch-icon-precomposed" href="http://localhost:5000/static/govuk_template/assets/images/apple-touch-icon-60x60.png?0.17.0">
+    <link rel="shortcut icon" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/favicon.ico?0.18.3" type="image/x-icon" />
+    <link rel="mask-icon" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/gov.uk_logotype_crown.svg?0.18.3" color="#0b0c0c">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/apple-touch-icon-152x152.png?0.18.3">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/apple-touch-icon-120x120.png?0.18.3">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/apple-touch-icon-76x76.png?0.18.3">
+    <link rel="apple-touch-icon-precomposed" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/apple-touch-icon-60x60.png?0.18.3">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="http://localhost:5000/static/govuk_template/assets/images/opengraph-image.png?0.17.0">
+    <meta property="og:image" content="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/opengraph-image.png?0.18.3">
 
     
 
-  
-    <link rel="stylesheet" href="http://localhost:5000/static/stylesheets/govuk_elements.css?81fd5df3">
-  
-    <link rel="stylesheet" href="http://localhost:5000/static/stylesheets/main.css?243f867b">
-  
-
-  <script src="http://localhost:5000/static/js/vendor/jquery/jquery.min.js"></script>
+  <!-- use compiled govuk.css from the template -->
+  <link rel="stylesheet" href="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/stylesheets/govuk-template.css">
 
   
-  
-    <link rel="stylesheet" href="http://localhost:5000/static/stylesheets/notes.css?ba24d8f6">
-  
 
+  
+    <link rel="stylesheet" href="https://ags-prototypes.herokuapp.com/static/gen/css/govuk_elements.css?55316caa">
+  
 
 
   </head>
 
   <body class="">
-    <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     
 
     <div id="skiplink-container">
@@ -84,38 +54,40 @@
         
       
     </div>
-    <!--end global-cookie-message-->
 
     
-    <header role="banner" id="global-header" class="">
+    <header role="banner" id="global-header" class="with-proposition">
       <div class="header-wrapper">
         <div class="header-global">
           <div class="header-logo">
             <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
-              <img src="http://localhost:5000/static/govuk_template/assets/images/gov.uk_logotype_crown_invert_trans.png?0.17.0" width="35" height="31" alt=""> GOV.UK
+              <img src="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/images/gov.uk_logotype_crown_invert_trans.png?0.18.3" width="36" height="32" alt=""> GOV.UK
             </a>
           </div>
           
         </div>
         
-      </div>
-    </header>
-    <!--end header-->
-    
+<div class='header-proposition'>
+  <div class='content'>
+    <nav id='proposition-menu'>
+      <a href='/' id='proposition-name'>Accessing GOV services</a>
+    </nav>
+  </div>
+</div>
 
-    
+      </div>
+    </header>    
 
     <div id="global-header-bar"></div>
-    <!--end global-header-bar-->
 
     
-  <main id="wrapper" role="main">
-    <div id="content">
-      <div class="inner-block">
-        <div class="phase-banner-alpha">
-          <p>
-            <strong class="phase-tag">ALPHA</strong>
-            <span>This is a prototype service</span>
-          </p>
-        </div>
-      </div>
+  <main id="content" role="main">
+    <div class="phase-banner-alpha">
+      <p>
+        <strong class="phase-tag">ALPHA</strong>
+        <span>You can help us improve this app by getting in touch and providing feedback.</span>
+      </p>
+    </div>
+    
+
+  <a href="/" class="link-back" onclick="window.history.back()">Back</a>

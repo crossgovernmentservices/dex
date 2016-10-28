@@ -49,6 +49,14 @@ func (c *OAuth2Connector) TrustedEmailProvider() bool {
 	return c.conn.TrustedEmailProvider()
 }
 
+func (c *OAuth2Connector) Department() string {
+	return ""
+}
+
+func (c *OAuth2Connector) HelpText() string {
+	return ""
+}
+
 func (c *OAuth2Connector) LoginURL(sessionKey, prompt string) (string, error) {
 	return c.conn.Client().AuthCodeURL(sessionKey, oauth2.GrantTypeAuthCode, prompt), nil
 }

@@ -1,14 +1,7 @@
-      <div class="report-a-problem-toggle-wrapper js-footer feedback-footer">
-        <p class="report-a-problem-toggle">
-          <a href="" class="js-report-a-problem-toggle">Is there anything wrong with this page?</a>
-        </p>
-      </div>
-
     </div>
   </main>
-
-
-    <footer class="group js-footer" id="footer" role="contentinfo">
+  
+  <footer class="group js-footer" id="footer" role="contentinfo">
 
       <div class="footer-wrapper">
         
@@ -32,11 +25,22 @@
       </div>
     </footer>
 
-    <!--end footer-->
-
     <div id="global-app-error" class="app-error hidden"></div>
 
-    <script src="http://localhost:5000/static/govuk_template/assets/javascripts/govuk-template.js?0.17.0" type="text/javascript"></script>
+    <script src="https://ags-prototypes.herokuapp.com/static/govuk_template/assets/javascripts/govuk-template.js?0.18.3"></script>
 
+    
+
+  
+  <!-- Javascript -->
+<script src="https://ags-prototypes.herokuapp.com/static/govuk_elements/public/javascripts/govuk/details.polyfill.js"></script>
+<script src="https://ags-prototypes.herokuapp.com/static/govuk_elements/public/javascripts/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://ags-prototypes.herokuapp.com/static/govuk_frontend_toolkit/javascripts/govuk/selection-buttons.js"></script>
+<script src="https://ags-prototypes.herokuapp.com/static/js/app.js"></script>
+
+
+
+    
+    <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
   </body>
 </html>

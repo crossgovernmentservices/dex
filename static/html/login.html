@@ -1,6 +1,5 @@
-{{ template "header.html" }}
+{{ template "govuk_header.html" }}
 
-<div class="panel">
   {{ if .ShowEmailVerifiedMessage }}
     <h2 id="heading">Your email has been verified!</h2>
   {{ end }}
@@ -12,7 +11,7 @@
       <h2 class="heading">Create Your {{ issuerName }} Account</h2>
       <div class="explain">Verify using either option below</div>
     {{ else }}
-      <h2 class="heading">Log in to {{ issuerName }} </h2>
+      <h1 class="heading-xlarge">Which department do you work for?</h1>
     {{ end}}
   {{ end }}
 
@@ -49,21 +48,40 @@
           </div>
         {{ end }}
       {{ else }}
+      <form>
+       <fieldset class="form-group">
+         <legend class="visuallyhidden">Which department do you work for?</legend>
         {{ range $c := .Links }}
-          <div class="form-row">
-            <a href="{{ $c.URL | absPath }}" target="_self">
-              <button class="btn btn-provider">
-                <span class="btn-icon btn-icon-{{ $c.ID }}"></span>
-                <span class="btn-text">Log in with {{ $c.DisplayName }}</span>
-              </button>
-            </a>
-          </div>
+          <label class="block-label selection-button-radio" for="department-{{ $c.ID }}">
+            <input onchange="setTarget('{{ $c.URL | absPath }}')" id="department-{{ $c.ID }}" type="radio" name="radio-know-email-group" value="Yes" aria-controls="know-email" aria-expanded="true">
+            <span class="selection-heading">{{ $c.DisplayName }}</span>
+            <p class="selection-help-text">{{ $c.HelpText }}</p>
+          </label>
         {{ end }}
+        <p class="form-block">or</p>
+
+        <label class="block-label selection-button-radio" for="none-of-the-above">
+          <input id="none-of-the-above" type="radio" name="radio-know-email-group" value="No" aria-controls="know-email" aria-expanded="false">
+          None of the above
+        </label>
+         </fieldset>
+         <div class="form-group">
+          <input type="button" class="button" onclick="redirectToTarget()" value="Submit"/>
+        </div>
+      </form>
+       <script>
+         var target = '';
+        function setTarget(url) {
+          target = url;
+        }
+
+        function redirectToTarget() {
+          window.location.href = target;
+        }
+      </script>
       {{ end }}
     {{ end }}
   </div>
-
-</div>
 
 {{ if not .Error }}
   <div class="footer subtle-text">
@@ -77,4 +95,4 @@
   </div>
 {{ end }}
 
-{{ template "footer.html" }}
+{{ template "govuk_footer.html" }}

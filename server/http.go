@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"sort"
 	"strings"
 	"time"
 
@@ -49,6 +50,13 @@ var (
 	cookieLastSeen                 = "LastSeen"
 	cookieShowEmailVerifiedMessage = "ShowEmailVerifiedMessage"
 )
+
+// LinkSorter sorts links by department.
+type LinkSorter []Link
+
+func (a LinkSorter) Len() int           { return len(a) }
+func (a LinkSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a LinkSorter) Less(i, j int) bool { return a[i].DisplayName < a[j].DisplayName }
 
 func handleDiscoveryFunc(cfg oidc.ProviderConfig) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -111,6 +119,8 @@ type Link struct {
 	URL         string
 	ID          string
 	DisplayName string
+	// Department  string
+	HelpText string
 }
 
 type templateData struct {
@@ -250,18 +260,26 @@ func renderLoginPage(w http.ResponseWriter, r *http.Request, srv OIDCServer, idp
 		var link Link
 		link.ID = id
 
-		displayName, ok := connectorDisplayNameMap[id]
-		if !ok {
-			displayName = id
+		if idpc.Department() != "" {
+			link.DisplayName = idpc.Department()
+		} else {
+			displayName, ok := connectorDisplayNameMap[id]
+			if !ok {
+				displayName = id
+			}
+			link.DisplayName = displayName
 		}
-		link.DisplayName = displayName
+
+		link.HelpText = idpc.HelpText()
 
 		v := r.URL.Query()
 		v.Set("connector_id", idpc.ID())
 		v.Set("response_type", "code")
 		link.URL = httpPathAuth + "?" + v.Encode()
+		log.Infof("URL Error: %s", err)
 		td.Links = append(td.Links, link)
 	}
+	sort.Sort(LinkSorter(td.Links))
 
 	execTemplate(w, tpl, td)
 }
@@ -367,10 +385,12 @@ func handleAuthFunc(srv OIDCServer, idpcs []connector.Connector, tpl *template.T
 
 		var p string
 		if register {
+			log.Info("register")
 			p = "select_account consent"
 		}
 		if shouldReprompt(r) || register {
-			p = "select_account"
+			// p = "select_account"	// commented out as don't want to show the google accounts list
+			p = "none"
 		}
 		lu, err := idpc.LoginURL(key, p)
 		if err != nil {
@@ -610,6 +630,7 @@ func createLastSeenCookie() *http.Cookie {
 func shouldReprompt(r *http.Request) bool {
 	_, err := r.Cookie(cookieLastSeen)
 	if err == nil {
+		log.Info("shouldReprompt")
 		return true
 	}
 	return false
