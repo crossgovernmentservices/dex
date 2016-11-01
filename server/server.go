@@ -237,6 +237,7 @@ func (s *Server) HTTPHandler() http.Handler {
 		}
 	}
 
+	handleStripPrefix(httpPathStatic+"/", handleStaticFunc(s.absURL().Path))
 	handleFunc(httpPathDiscovery, handleDiscoveryFunc(s.ProviderConfig()))
 	handleFunc(httpPathAuth, handleAuthFunc(s, s.Connectors, s.LoginTemplate, s.EnableRegistration))
 	handleFunc(httpPathOOB, handleOOBFunc(s, s.OOBTemplate))

@@ -46,6 +46,7 @@ var (
 	httpPathDebugVars          = "/debug/vars"
 	httpPathClientRegistration = "/registration"
 	httpPathOOB                = "/oob"
+	httpPathStatic             = "/static"
 
 	cookieLastSeen                 = "LastSeen"
 	cookieShowEmailVerifiedMessage = "ShowEmailVerifiedMessage"
@@ -57,6 +58,12 @@ type LinkSorter []Link
 func (a LinkSorter) Len() int           { return len(a) }
 func (a LinkSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a LinkSorter) Less(i, j int) bool { return a[i].DisplayName < a[j].DisplayName }
+
+func handleStaticFunc(path string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, r.URL.Path)
+	}
+}
 
 func handleDiscoveryFunc(cfg oidc.ProviderConfig) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -119,8 +126,7 @@ type Link struct {
 	URL         string
 	ID          string
 	DisplayName string
-	// Department  string
-	HelpText string
+	HelpText    string
 }
 
 type templateData struct {
